@@ -50,21 +50,21 @@ app.get('/users', async (req,res) =>{
 
 // testScores
 
-app.patch('/users/:rollno', (req,res) =>{
+app.patch('/users/:rollno', async (req,res) =>{
 
-    // console.log(req.params);
 
-    // try{
-    //     const marks = Testscore.updateOne(
-    //         {rollno: req.params.rollno}, 
-    //         {$set: {first_round: req.body.first_round, second_round: req.body.second_round, third_round: req.body.third_round}})
-    //     res.send(marks)
-    // }
+    console.log(req.params.rollno);
 
-    // catch(err){
-    //     res.send(err);
-    // }
+    try{
+        const marks =  await Testscore.updateOne(
+            {rollno: req.params.rollno}, 
+            {$set: {first_round: req.body.first_round, second_round: req.body.second_round , third_round: req.body.third_round}})
+        res.send(marks)
+    }
 
+    catch(err){
+        res.send(err);
+    }
 
 
     // const test = new Testscore(req.body);
