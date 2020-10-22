@@ -31,7 +31,10 @@ const scoreSchema = new mongoose.Schema({
                 throw new Error('Maximum marks is 10')
             }
         }
-    }
+    },
+    total:{
+        type:Number,
+        }
 });
 
 

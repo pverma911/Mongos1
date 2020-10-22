@@ -24,6 +24,7 @@ app.use(express.json())
 
 
 app.post('/users', async (req,res) =>{
+    
     const user = new Candidate({
         name: req.body.name,
         rollno: req.body.rollno,
@@ -93,7 +94,14 @@ app.get('/addscores', (req,res) =>{
 // candidates scores:
 
 app.post('/putscore', (req,res) =>{
-    const test = new Testscore(req.body);
+    const total = Number(req.body.first_round) +Number(req.body.second_round) +Number(req.body.third_round)
+    const test = new Testscore({
+        rollno: req.body.rollno,
+        first_round: req.body.first_round,
+        second_round: req.body.second_round,
+        third_round: req.body.third_round,
+        total: total
+    });
 
 
     test.save().then((test) => {
@@ -103,10 +111,10 @@ app.post('/putscore', (req,res) =>{
 })
 
 
-app.get('/maxmarks/', async (req,res) =>{
+app.get('/maxmarks', async (req,res) =>{
 
     try{
-        const maxmark =Testscore.findOne({}).sort('-first_round');
+        const maxmark = await Testscore.findOne({}).sort('-total');
         res.send(maxmark)
     }
 

@@ -8,19 +8,19 @@ const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
     name:{
         type:String,
-        // required: true
+        required: "Please enter name"
     },
     rollno:{
         type:Number,
-        // unique:true
+        unique:true
     },
     email:{
         type:String,
-        // required: true
+        required: "Please enter your Email"
     },
     address:{
         type:String,
-        // required: true
+        required: "Please enter a Valid Address"
     }
 });
 
