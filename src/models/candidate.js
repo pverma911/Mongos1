@@ -8,19 +8,19 @@ const mongoose = require('mongoose');
 const candidateSchema = new mongoose.Schema({
     name:{
         type:String,
-        required: true
+        // required: true
     },
     rollno:{
         type:Number,
-        unique:true
+        // unique:true
     },
     email:{
         type:String,
-        required: true
+        // required: true
     },
     address:{
         type:String,
-        required: true
+        // required: true
     }
 });
 

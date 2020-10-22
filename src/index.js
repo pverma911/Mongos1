@@ -23,14 +23,20 @@ app.use(express.json())
 
 
 
-app.post('/users', (req,res) =>{
-    const user = new Candidate(req.body);
-
-
-    user.save().then((user) => {
-        console.log('saved', user)
-        res.send(user)
+app.post('/users', async (req,res) =>{
+    const user = new Candidate({
+        name: req.body.name,
+        rollno: req.body.rollno,
+        email: req.body.email,
+        address: req.body.address
     });
+
+    try{
+        await user.save();
+        res.send(user);
+    } catch(err){
+        res.send(err)
+    }
     
 
 })
@@ -96,6 +102,19 @@ app.post('/putscore', (req,res) =>{
     });
 })
 
+
+app.get('/maxmarks/', async (req,res) =>{
+
+    try{
+        const maxmark =Testscore.findOne({}).sort('-first_round');
+        res.send(maxmark)
+    }
+
+    catch(err){
+        res.send(err);
+    }
+    
+})
 
 
 
