@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 
 
 const scoreSchema = new mongoose.Schema({
+    rollno:{
+        type:Number,
+        unique: true
+    },
     first_round:{
         type:Number,
         validate(value){

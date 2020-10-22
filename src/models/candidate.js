@@ -21,17 +21,6 @@ const candidateSchema = new mongoose.Schema({
     address:{
         type:String,
         required: true
-    },
-    test_scores:{ 
-        first_round:{
-            type: Number
-        },
-        second_round:{
-            type: Number
-        },
-        third_round:{
-            type: Number
-        }
     }
 });
 

@@ -12,6 +12,8 @@ const app = express();
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
 
 app.use(express.json())
 
@@ -22,29 +24,46 @@ app.use(express.json())
 
 
 app.post('/users', (req,res) =>{
-    const me = new Candidate(req.body);
+    const user = new Candidate(req.body);
 
 
-    me.save().then((me) => {
-        console.log('saved', me)
-        res.send(me)
+    user.save().then((user) => {
+        console.log('saved', user)
+        res.send(user)
     });
     
 
 })
 
 
-app.get('/users', (req,res) =>{
+app.get('/users', async (req,res) =>{
     // res.send(req.user);
-    console.log(req.params);
+    try{
+        const candidate = await Candidate.find()
+        res.send(candidate)
+    } catch(err){
+        res.send({message:err})
+    }
+    
 })
 
 
 // testScores
 
-app.patch('/users', async (req,res) =>{
+app.patch('/users/:rollno', (req,res) =>{
 
-    const user = await Candidate.findOneAndUpdate({rollno})
+    // console.log(req.params);
+
+    // try{
+    //     const marks = Testscore.updateOne(
+    //         {rollno: req.params.rollno}, 
+    //         {$set: {first_round: req.body.first_round, second_round: req.body.second_round, third_round: req.body.third_round}})
+    //     res.send(marks)
+    // }
+
+    // catch(err){
+    //     res.send(err);
+    // }
 
 
 
@@ -67,15 +86,15 @@ app.get('/addscores', (req,res) =>{
 
 // candidates scores:
 
-// app.post('/putscore', (req,res) =>{
-//     const test = new Testscore(req.body);
+app.post('/putscore', (req,res) =>{
+    const test = new Testscore(req.body);
 
 
-//     test.save().then((test) => {
-//         console.log('saved', test)
-//         res.send(test)
-//     });
-// })
+    test.save().then((test) => {
+        console.log('saved', test)
+        res.send(test)
+    });
+})
 
 
 
