@@ -1,0 +1,32 @@
+
+const sample = {{
+    "name" : "dwayne",
+    "rollno" : 1,
+    "email" : "dwayne@ymail.com",
+    "address" : "Texas"
+},
+
+/* 2 */
+{
+    "name" : "james",
+    "rollno" : 2,
+    "email" : "james@ymail.com",
+    "address" : "Chicago"
+},
+
+/* 3 */
+{
+    "name" : "Jimmy",
+    "rollno" : 3,
+    "email" : "jimmy@ymail.com",
+    "address" : "Delhi"
+},
+
+/* 4 */
+{
+    "name" : "Michael",
+    "rollno" : 4,
+    "email" : "mike@ymail.com",
+    "address" : "Dublin"
+}
+}

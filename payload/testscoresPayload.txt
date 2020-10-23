@@ -1,0 +1,37 @@
+const sample ={{
+    /* 1 */
+{
+    "rollno" : 1,
+    "first_round" : 6,
+    "second_round" : 7,
+    "third_round" : 8,
+    "total" : 21
+},
+
+/* 2 */
+{
+    "rollno" : 2,
+    "first_round" : 8,
+    "second_round" : 9,
+    "third_round" : 10,
+    "total" : 27
+},
+
+/* 3 */
+{
+    "rollno" : 3,
+    "first_round" : 10,
+    "second_round" : 10,
+    "third_round" : 10,
+    "total" : 30
+}
+
+/* 4 */
+{
+    "rollno" : 4,
+    "first_round" : 10,
+    "second_round" : 10,
+    "third_round" : 9,
+    "total" : 29
+}
+}
