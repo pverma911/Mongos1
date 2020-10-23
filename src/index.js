@@ -5,6 +5,8 @@ const mongodb= require('mongodb');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
 const Candidate = require('./models/candidate');
 const Testscore = require('./models/test_scores');
 
@@ -12,6 +14,7 @@ const Testscore = require('./models/test_scores');
 const app = express();
 
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
@@ -54,7 +57,7 @@ app.get('/users', async (req,res) =>{
     // res.send(req.user);
     try{
         const candidate = await Candidate.find()
-        res.send(candidate)
+        res.json(candidate)
     } catch(err){
         res.send({message:err})
     }
